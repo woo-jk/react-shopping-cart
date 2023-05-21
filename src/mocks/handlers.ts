@@ -14,13 +14,13 @@ interface PatchUpdateCartRequestBody {
   quantity: number;
 }
 
-export const productHandler = [
+const productHandler = [
   rest.get('/products', (req, res, ctx) => {
     return res(ctx.delay(3000), ctx.status(200), ctx.json(mockProducts));
   }),
 ];
 
-export const cartHandler = [
+const cartHandler = [
   rest.get('/cart-items', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(cartList));
   }),
@@ -70,3 +70,5 @@ export const cartHandler = [
     return res(ctx.status(204));
   }),
 ];
+
+export const handlers = [...productHandler, ...cartHandler];

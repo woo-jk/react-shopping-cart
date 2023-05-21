@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import CartItem from './CartItem';
 import CheckedCartListProvider from '../../../provider/CheckedListProvider';
-import { cartHandler } from '../../../mocks/handlers';
+import { handlers } from '../../../mocks/handlers';
 
 const MockCartItem = () => {
   const cartItem = {
@@ -27,7 +27,7 @@ const meta = {
   title: 'CartItem',
   component: MockCartItem,
   tags: ['autodocs'],
-  parameters: { msw: cartHandler },
+  parameters: { msw: handlers },
 } satisfies Meta<typeof CartItem>;
 
 export default meta;
