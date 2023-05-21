@@ -4,7 +4,7 @@ import type { CartProduct } from '../../types/product';
 
 const fetchEffect: AtomEffect<CartProduct[]> = ({ setSelf, trigger }) => {
   const fetchCartItemList = async () => {
-    const response = await fetch('api/cart-items');
+    const response = await fetch('/api/cart-items');
 
     // if (response.status !== 200) throw new Error('서버에 장애가 발생했습니다.');
 
