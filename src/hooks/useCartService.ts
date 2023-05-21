@@ -6,7 +6,7 @@ const useCartService = () => {
   const [cartList, setCartList] = useRecoilState(cartState);
 
   const fetchCartItem = async () => {
-    const response = await fetch('cart-items');
+    const response = await fetch('api/cart-items');
 
     if (!response.ok)
       throw new Error('장바구니 목록을 불러오는 과정에서 문제가 발생했습니다.');
@@ -16,7 +16,7 @@ const useCartService = () => {
   };
 
   const addCartItem = async (product: Product) => {
-    const response = await fetch(`cart-items`, {
+    const response = await fetch(`api/cart-items`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ const useCartService = () => {
 
   const updateCartItemQuantity =
     (cartId: string) => async (quantity: number) => {
-      const response = await fetch(`cart-items/${cartId}`, {
+      const response = await fetch(`api/cart-items/${cartId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

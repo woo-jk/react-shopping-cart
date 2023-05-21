@@ -4,7 +4,7 @@ import useFetch from '../../../hooks/api/useFetch';
 import { Product } from '../../../types/product';
 
 const ProductList = () => {
-  const { getData } = useFetch<Product[]>('./products');
+  const { getData } = useFetch<Product[]>('api/products');
   const productList = getData();
 
   return (
