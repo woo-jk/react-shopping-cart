@@ -4,6 +4,9 @@ import { RecoilRoot } from 'recoil';
 import App from './App';
 import GlobalStyle from './GlobalStyle';
 import { worker } from './mocks/browser';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
+import ProductListPage from './pages/ProductListPage';
+import CartPage from './pages/CartPages';
 
 const main = async () => {
   if (window.location.pathname === '/react-shopping-cart') {
@@ -24,6 +27,23 @@ if (process.env.NODE_ENV === 'development') {
   main();
 }
 
+const router = createHashRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      {
+        path: '',
+        element: <ProductListPage />,
+      },
+      {
+        path: 'cart',
+        element: <CartPage />,
+      },
+    ],
+  },
+]);
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
@@ -33,7 +53,7 @@ root.render(
     <GlobalStyle />
     <RecoilRoot>
       <Suspense>
-        <App />
+        <RouterProvider router={router} />
       </Suspense>
     </RecoilRoot>
   </React.StrictMode>,
