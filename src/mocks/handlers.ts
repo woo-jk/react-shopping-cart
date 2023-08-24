@@ -26,7 +26,7 @@ interface PatchUpdateCartRequestBody {
 
 export const productHandler = [
   rest.get(PRODUCTS_BASE_URL, (req, res, ctx) => {
-    return res(ctx.delay(3000), ctx.status(200), ctx.json(mockProducts));
+    return res(ctx.delay(1500), ctx.status(200), ctx.json(mockProducts));
   }),
 ];
 
